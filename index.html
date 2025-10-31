@@ -24,13 +24,51 @@
       background: var(--eco-cream);
       color: #222;
       line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* 左右稻穗邊框裝飾 */
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      width: 140px;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.12;
+      z-index: 0;
+      pointer-events: none;
+    }
+    body::before {
+      left: 0;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Rice_plant_illustration.svg/512px-Rice_plant_illustration.svg.png');
+      background-position: left center;
+    }
+    body::after {
+      right: 0;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Rice_plant_illustration.svg/512px-Rice_plant_illustration.svg.png');
+      background-position: right center;
+      transform: scaleX(-1);
+    }
+
+    /* 頁尾土壤背景 */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(180deg, #2f6f3e 0%, #6b4b2f 60%, #3a2514 100%);
+      color: #fff;
+      letter-spacing: .03em;
+      position: relative;
+      z-index: 2;
     }
 
     /* 導覽列 */
     header.site-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 24px;
-      background: rgba(248,245,236,.9);
+      background: rgba(248,245,236,.95);
       backdrop-filter: blur(8px);
       position: sticky; top: 0; z-index: 10;
       border-bottom: 1px dashed rgba(0,0,0,.15);
@@ -39,7 +77,6 @@
     .brand {
       display: flex; align-items: center; gap: 12px;
     }
-
     .brand-logo {
       width: 44px; height: 44px; border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #fff, #e7e2d5 70%, #c9c1ad);
@@ -49,21 +86,10 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .brand-text {
-      display: flex; align-items: center; gap: 8px;
-    }
+    .brand-text { display: flex; align-items: center; gap: 8px; }
+    .brand-title { font-weight: 800; font-size: 18px; color: var(--eco-deep); white-space: nowrap; }
+    .brand-sub { font-size: 12px; color: #666; position: relative; top: 2px; }
 
-    .brand-title {
-      font-weight: 800; font-size: 18px; color: var(--eco-deep);
-      white-space: nowrap;
-    }
-
-    .brand-sub {
-      font-size: 12px; color: #666;
-      position: relative; top: 2px;
-    }
-
-    /* 縮小版 QR 放品牌右側 */
     .qr-inline {
       display: inline-block;
       margin-left: 8px;
@@ -73,7 +99,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,.1);
       padding: 2px;
     }
-
     .qr-inline img {
       width: 60px; height: 60px;
       border-radius: 6px;
@@ -88,7 +113,7 @@
       font-weight: 700;
     }
 
-    /* 首屏 Hero */
+    /* Hero 區 */
     .hero {
       display: flex;
       align-items: center;
@@ -96,11 +121,11 @@
       gap: 32px;
       padding: 60px min(6vw, 48px);
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
     }
-    .hero-copy {
-      flex: 1 1 420px;
-      max-width: 580px;
-    }
+
+    .hero-copy { flex: 1 1 420px; max-width: 580px; }
     .headline {
       font-size: clamp(28px, 4vw, 48px);
       font-weight: 900;
@@ -125,7 +150,6 @@
       text-decoration: none; font-weight: 700;
     }
 
-    /* 右側圖片框 */
     .hero-art {
       flex: 1 1 480px;
       display: flex;
@@ -138,19 +162,14 @@
       background: #fff;
       max-height: 460px;
     }
-    .hero-art img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .hero-art img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* 中央 CTA */
+    /* 今年的田間承諾 */
     .center-cta {
       max-width: 880px; margin: 48px auto;
       background: #fff; border-radius: 16px;
       box-shadow: 0 10px 24px rgba(0,0,0,.08);
-      padding: 28px;
-      text-align: center;
+      padding: 28px; text-align: center; position: relative; z-index: 1;
     }
     .cta-title { font-size: 22px; color: var(--eco-deep); font-weight: 800; }
     .cta-desc { color: #666; margin-bottom: 18px; }
@@ -159,6 +178,7 @@
     .steps {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px; padding: 0 min(6vw, 48px) 60px;
+      position: relative; z-index: 1;
     }
     .step {
       background: linear-gradient(180deg, #fff, #f7f4ed);
@@ -191,18 +211,13 @@
     }
     .back-top.show { display: block; }
 
-    footer {
-      text-align: center; padding: 30px;
-      background: linear-gradient(180deg, #2f6f3e, #1f3b2f);
-      color: #fff; letter-spacing: .03em;
-    }
-
     /* 手機版 */
     @media (max-width: 768px) {
       .brand-text { flex-direction: column; align-items: flex-start; gap: 4px; }
       .qr-inline img { width: 42px; height: 42px; }
       .hero { flex-direction: column; padding: 40px 20px; }
       .hero-art { order: -1; max-height: 300px; }
+      body::before, body::after { opacity: 0.08; width: 80px; }
     }
   </style>
 </head>
@@ -213,9 +228,7 @@
       <div class="brand-logo">稻</div>
       <div class="brand-text">
         <div class="brand-title">稻寶地．幸福農
-          <span class="qr-inline">
-            <img src="qr.png" alt="官方 QR Code">
-          </span>
+          <span class="qr-inline"><img src="qr.png" alt="官方 QR Code"></span>
         </div>
       </div>
     </div>
@@ -242,7 +255,6 @@
       </div>
     </section>
 
-    <!-- 今年的田間承諾 -->
     <section class="center-cta" id="about">
       <h2 class="cta-title">今年的田間承諾：三件事、持續做。</h2>
       <p class="cta-desc">
@@ -255,28 +267,11 @@
       </div>
     </section>
 
-    <!-- 四步驟 -->
     <section class="steps" id="method">
-      <article class="step">
-        <div class="stamp">1</div>
-        <h3>覆草保水</h3>
-        <p>稻草回田覆蓋地表，降低蒸散與高溫烘灼，穩定土壤含水。</p>
-      </article>
-      <article class="step">
-        <div class="stamp">2</div>
-        <h3>減少翻土</h3>
-        <p>降低土壤擾動，守住碳與微生物棲地，減少 CO₂ 釋放。</p>
-      </article>
-      <article class="step">
-        <div class="stamp">3</div>
-        <h3>友善生物</h3>
-        <p>以誘捕與生態平衡取代化學，讓益蟲與鳥類回來。</p>
-      </article>
-      <article class="step">
-        <div class="stamp">4</div>
-        <h3>公開紀錄</h3>
-        <p>每月更新溫度、水位與農事，邀請您共同見證改變。</p>
-      </article>
+      <article class="step"><div class="stamp">1</div><h3>覆草保水</h3><p>稻草回田覆蓋地表，降低蒸散與高溫烘灼，穩定土壤含水。</p></article>
+      <article class="step"><div class="stamp">2</div><h3>減少翻土</h3><p>降低土壤擾動，守住碳與微生物棲地，減少 CO₂ 釋放。</p></article>
+      <article class="step"><div class="stamp">3</div><h3>友善生物</h3><p>以誘捕與生態平衡取代化學，讓益蟲與鳥類回來。</p></article>
+      <article class="step"><div class="stamp">4</div><h3>公開紀錄</h3><p>每月更新溫度、水位與農事，邀請您共同見證改變。</p></article>
     </section>
   </main>
 

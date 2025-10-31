@@ -144,6 +144,37 @@
       object-fit: cover;
     }
 
+    /* 中央 CTA */
+    .center-cta {
+      max-width: 880px; margin: 48px auto;
+      background: #fff; border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+      padding: 28px;
+      text-align: center;
+    }
+    .cta-title { font-size: 22px; color: var(--eco-deep); font-weight: 800; }
+    .cta-desc { color: #666; margin-bottom: 18px; }
+
+    /* 四步驟卡 */
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px; padding: 0 min(6vw, 48px) 60px;
+    }
+    .step {
+      background: linear-gradient(180deg, #fff, #f7f4ed);
+      border: 1px solid rgba(0,0,0,.1);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+    .stamp {
+      width: 50px; height: 50px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: #fde8c4;
+      color: #b76b1a; font-weight: 900;
+      border: 2px dashed #b76b1a;
+    }
+
     /* 回頂按鈕 */
     .back-top {
       position: fixed;
@@ -209,6 +240,43 @@
       <div class="hero-art">
         <img src="ok2.png" alt="花蓮稻田晨曦景色">
       </div>
+    </section>
+
+    <!-- 今年的田間承諾 -->
+    <section class="center-cta" id="about">
+      <h2 class="cta-title">今年的田間承諾：三件事、持續做。</h2>
+      <p class="cta-desc">
+        ① 減少機械進出與翻耕頻率。② 覆蓋稻草維持土壤含水與碳儲。③ 以自然誘因替代化學投入。<br>
+        每個月公開一次農事紀錄，讓您看見努力與成果。
+      </p>
+      <div class="cta-row" style="justify-content:center;">
+        <a href="#method" class="btn-primary">了解自然工法</a>
+        <a href="#about" class="btn-ghost">關於稻寶地</a>
+      </div>
+    </section>
+
+    <!-- 四步驟 -->
+    <section class="steps" id="method">
+      <article class="step">
+        <div class="stamp">1</div>
+        <h3>覆草保水</h3>
+        <p>稻草回田覆蓋地表，降低蒸散與高溫烘灼，穩定土壤含水。</p>
+      </article>
+      <article class="step">
+        <div class="stamp">2</div>
+        <h3>減少翻土</h3>
+        <p>降低土壤擾動，守住碳與微生物棲地，減少 CO₂ 釋放。</p>
+      </article>
+      <article class="step">
+        <div class="stamp">3</div>
+        <h3>友善生物</h3>
+        <p>以誘捕與生態平衡取代化學，讓益蟲與鳥類回來。</p>
+      </article>
+      <article class="step">
+        <div class="stamp">4</div>
+        <h3>公開紀錄</h3>
+        <p>每月更新溫度、水位與農事，邀請您共同見證改變。</p>
+      </article>
     </section>
   </main>
 

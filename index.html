@@ -35,16 +35,51 @@
       position: sticky; top: 0; z-index: 10;
       border-bottom: 1px dashed rgba(0,0,0,.15);
     }
-    .brand { display: flex; align-items: center; gap: 12px; }
+
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+    }
+
     .brand-logo {
       width: 44px; height: 44px; border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #fff, #e7e2d5 70%, #c9c1ad);
       display: grid; place-items: center;
-      border: 2px solid #b29c7a; font-weight: 900; color: var(--eco-deep);
+      border: 2px solid #b29c7a;
+      font-weight: 900; color: var(--eco-deep);
       box-shadow: var(--shadow-soft);
     }
-    .brand-title { font-weight: 800; font-size: 18px; color: var(--eco-deep); }
-    .brand-sub { font-size: 12px; color: #666; }
+
+    .brand-text {
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .brand-title {
+      font-weight: 800; font-size: 18px; color: var(--eco-deep);
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      font-size: 12px; color: #666;
+      position: relative; top: 2px;
+    }
+
+    /* 縮小版 QR 放品牌右側 */
+    .qr-inline {
+      display: inline-block;
+      margin-left: 8px;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+      padding: 2px;
+    }
+
+    .qr-inline img {
+      width: 60px; height: 60px;
+      border-radius: 6px;
+      object-fit: cover;
+      vertical-align: middle;
+    }
 
     nav a {
       text-decoration: none;
@@ -109,55 +144,6 @@
       object-fit: cover;
     }
 
-    /* 中央 CTA */
-    .center-cta {
-      max-width: 880px; margin: 48px auto;
-      background: #fff; border-radius: 16px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.08);
-      padding: 28px;
-      text-align: center;
-    }
-    .cta-title { font-size: 22px; color: var(--eco-deep); font-weight: 800; }
-    .cta-desc { color: #666; margin-bottom: 18px; }
-
-    /* 四步驟卡 */
-    .steps {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px; padding: 0 min(6vw, 48px) 60px;
-    }
-    .step {
-      background: linear-gradient(180deg, #fff, #f7f4ed);
-      border: 1px solid rgba(0,0,0,.1);
-      border-radius: 14px;
-      padding: 16px;
-      box-shadow: var(--shadow-soft);
-    }
-    .stamp {
-      width: 50px; height: 50px; border-radius: 50%;
-      display: grid; place-items: center;
-      background: #fde8c4;
-      color: #b76b1a; font-weight: 900;
-      border: 2px dashed #b76b1a;
-    }
-
-    /* 固定 QR */
-    .qr-fixed {
-      position: fixed; right: 14px; top: 14px; z-index: 12;
-      background: rgba(255,255,255,.96);
-      border: 1px solid rgba(0,0,0,.12);
-      border-radius: 16px; padding: 10px;
-      box-shadow: var(--shadow-soft);
-      text-align: center;
-    }
-    .qr-fixed img {
-      width: 100px; height: 100px;
-      border-radius: 12px; object-fit: cover;
-    }
-    .qr-fixed small {
-      display: block; margin-top: 4px;
-      font-size: 12px; color: var(--eco-soil);
-    }
-
     /* 回頂按鈕 */
     .back-top {
       position: fixed;
@@ -180,28 +166,26 @@
       color: #fff; letter-spacing: .03em;
     }
 
-    /* RWD */
-    @media (max-width: 960px) {
+    /* 手機版 */
+    @media (max-width: 768px) {
+      .brand-text { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .qr-inline img { width: 42px; height: 42px; }
       .hero { flex-direction: column; padding: 40px 20px; }
       .hero-art { order: -1; max-height: 300px; }
-      .qr-fixed { transform: scale(0.8); transform-origin: top right; }
     }
   </style>
 </head>
 
 <body>
-  <!-- 固定 QR -->
-  <div class="qr-fixed">
-    <img src="qr.png" alt="官方 QR Code">
-    <small>掃碼加入｜田間日常</small>
-  </div>
-
   <header class="site-header">
     <div class="brand">
       <div class="brand-logo">稻</div>
-      <div>
-        <div class="brand-title">稻寶地．幸福農</div>
-        <div class="brand-sub">自然工法／小農減碳／永續共好</div>
+      <div class="brand-text">
+        <div class="brand-title">稻寶地．幸福農
+          <span class="qr-inline">
+            <img src="qr.png" alt="官方 QR Code">
+          </span>
+        </div>
       </div>
     </div>
     <nav>
@@ -226,59 +210,20 @@
         <img src="ok2.png" alt="花蓮稻田晨曦景色">
       </div>
     </section>
-
-    <section class="center-cta" id="about">
-      <h2 class="cta-title">今年的田間承諾：三件事、持續做。</h2>
-      <p class="cta-desc">① 減少機械進出與翻耕頻率。② 覆蓋稻草維持土壤含水與碳儲。③ 以自然誘因替代化學投入。</p>
-      <div class="cta-row" style="justify-content:center;">
-        <a href="#method" class="btn-primary">了解自然工法</a>
-        <a href="#about" class="btn-ghost">關於稻寶地</a>
-      </div>
-    </section>
-
-    <section class="steps" id="method">
-      <article class="step">
-        <div class="stamp">1</div>
-        <h3>覆草保水</h3>
-        <p>稻草回田覆蓋地表，降低蒸散與高溫烘灼，穩定土壤含水。</p>
-      </article>
-      <article class="step">
-        <div class="stamp">2</div>
-        <h3>減少翻土</h3>
-        <p>降低土壤擾動，守住碳與微生物棲地，減少 CO₂ 釋放。</p>
-      </article>
-      <article class="step">
-        <div class="stamp">3</div>
-        <h3>友善生物</h3>
-        <p>以誘捕與生態平衡取代化學，讓益蟲與鳥類回來。</p>
-      </article>
-      <article class="step">
-        <div class="stamp">4</div>
-        <h3>公開紀錄</h3>
-        <p>每月更新溫度、水位與農事，邀請您共同見證改變。</p>
-      </article>
-    </section>
   </main>
 
   <footer>
     © <span id="y"></span> 稻寶地．幸福農｜自然工法 × 減碳共好｜Pingtung, Taiwan
   </footer>
 
-  <!-- 回頂按鈕 -->
   <button class="back-top" id="backTop">↑</button>
 
   <script>
-    // 年份
     document.getElementById('y').textContent = new Date().getFullYear();
-
-    // 回頂按鈕顯示邏輯
     const backTop = document.getElementById('backTop');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 200) {
-        backTop.classList.add('show');
-      } else {
-        backTop.classList.remove('show');
-      }
+      if (window.scrollY > 200) backTop.classList.add('show');
+      else backTop.classList.remove('show');
     });
     backTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });

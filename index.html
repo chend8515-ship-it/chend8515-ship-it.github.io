@@ -1,9 +1,18 @@
-<!DOCTYPE html> <html lang="zh-Hant-TW"> <head>   <meta charset="utf-8" />   <meta name="viewport" content="width=device-width, initial-scale=1" />   <meta http-equiv="X-UA-Compatible" content="IE=edge" />   <title>稻寶地．幸福農｜復古×環保首頁</title>   <meta name="description" content="自然工法、減碳耕作、友善生態的復古環保首頁設計。" />   <meta name="theme-color" content="#1f3b2f" />   
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>稻寶地．幸福農｜復古×環保首頁</title>
+  <meta name="description" content="自然工法、減碳耕作、友善生態的復古環保首頁設計。" />
+  <meta name="theme-color" content="#1f3b2f" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;800;900&display=swap" rel="stylesheet">
 
-      <link rel="preload" as="image" href="ok2.png">
+  <link rel="preload" as="image" href="ok2.png">
 
   <style> /* 內嵌 CSS，單檔可直接上傳部署 */
     :root { /* 全站主題變數 */
@@ -31,7 +40,6 @@
         var(--eco-cream); /* 乳白底色 */
     }
 
-    /* (其餘 CSS 樣式保持不變，因為它們不影響載入速度或手機適應性) */
     /* 溫室效應氛圍：熱霧背景 */
     .heat-haze { position: fixed; inset: 0; pointer-events: none; z-index: 0; 
       background: radial-gradient( ellipse at 50% 20%, rgba(204, 75, 0, .12), transparent 35%),
@@ -74,7 +82,7 @@
     .btn-ghost { background: transparent; color: var(--eco-deep); padding: 12px 18px; border-radius: 14px; border: 1px dashed var(--eco-deep); text-decoration: none; font-weight: 800; letter-spacing: .02em; text-align: center; }
     .hero-art { position: relative; aspect-ratio: 1.1 / 1; background: radial-gradient( circle at 60% 40%, rgba(47, 111, 62, .25), transparent 50% ), linear-gradient( 145deg, #d8e3d5 0%, #f3f0e7 70% ); border: 2px solid #b29c7a; border-radius: var(--radius-2xl); box-shadow: var(--shadow-soft); overflow: hidden; }
     .hero-art img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-art::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient( 25deg, rgba(122, 91, 68, .18) 0 14px, transparent 14px 28px ); mix-blend-mode: multiply; }
+    /* 移除了 .hero-art::before 規則，取消了虛線效果 */
     .hero-plant { position: absolute; bottom: -6%; left: -4%; width: 140%; height: 70%; background: radial-gradient( ellipse at 20% 90%, rgba(47, 111, 62, .35), transparent 35% ), conic-gradient( from 180deg at 18% 100%, #4d8c5b, transparent 30% ), conic-gradient( from 175deg at 26% 100%, #2f6f3e, transparent 34% ), conic-gradient( from 185deg at 34% 100%, #7fb389, transparent 40% ); filter: blur(.5px); }
 
     /* 中央置中 CTA：筆記卡風 */
@@ -121,7 +129,8 @@
     }
   </style>
 </head>
-<body>     <div class="heat-haze"></div>
+<body>
+    <div class="heat-haze"></div>
   <div class="co2" style="left: 10%; width: 8px; height: 8px; animation-duration: 18s; animation-delay: 0s;"></div>
   <div class="co2" style="left: 22%; width: 14px; height: 14px; animation-duration: 22s; animation-delay: 3s;"></div>
   <div class="co2" style="left: 37%; width: 10px; height: 10px; animation-duration: 20s; animation-delay: 6s;"></div>
@@ -130,7 +139,7 @@
   <div class="co2" style="left: 86%; width: 12px; height: 12px; animation-duration: 24s; animation-delay: 2s;"></div>
 
     <a class="qr-fixed" href="#" aria-label="掃碼加入或點此開啟連結">
-        <img src="qr.png" alt="官方 QR Code" loading="lazy" decoding="async" /> 
+    <img src="qr.png" alt="官方 QR Code" loading="lazy" decoding="async" />
     <small>掃碼加入｜光復救災</small>
   </a>
 
@@ -139,88 +148,3 @@
       <a href="#top" class="brand-logo" aria-label="稻寶地品牌標誌">稻</a>
       <div class="brand-text">
         <div class="brand-title">稻寶地．幸福農</div>
-        <div class="brand-sub">自然工法／小農減碳／永續共好</div>
-      </div>
-    </div>
-    <nav class="actions" aria-label="主導覽">
-      <div class="capsule-stack">
-        <a class="pill" href="#about">關於我們</a>
-        <a class="pill" href="#method">自然工法</a>
-        <a class="pill" href="#impact">減碳成效</a>
-        <a class="pill" href="#join">加入支持</a>
-        <a class="pill" href="#contact">聯絡洽詢</a>
-      </div>
-    </nav>
-  </header>
-
-    <main>
-    <section class="hero" id="top">
-      <div class="hero-copy">
-        <h1 class="headline">讓土地喘口氣，<br/>把美好留給下一代。</h1>
-        <div class="keywords">
-          <span class="kw">無毒友善</span>
-          <span class="kw">覆草保水</span>
-          <span class="kw">減碳耕作</span>
-          <span class="kw">生態共融</span>
-          <span class="kw">田間透明</span>
-        </div>
-        <p class="subcopy">我們以「自然工法」為核心，透過覆草、減少翻土、保水保碳等實作，降低溫室氣體排放；並以公開透明的田間紀錄，邀請您一同守護風土。</p>
-        <div class="cta-row">
-          <a class="btn-primary" href="#join">立刻支持小農</a>
-          <a class="btn-ghost" href="#impact">查看減碳數據</a>
-        </div>
-      </div>
-      <div class="hero-art">
-                                <img src="ok2.png" alt="花蓮稻田晨曦景色" loading="eager" decoding="async" />
-      </div>
-    </section>
-
-        <section class="center-cta" id="about">
-      <div class="notecard">
-        <h2 class="cta-title">今年的田間承諾：三件事、持續做。</h2>
-        <p class="cta-desc">① 減少機械進出與翻耕頻率。② 覆蓋稻草維持土壤含水與碳儲。③ 以自然誘因替代化學投入。<br/>每個月公開一次農事紀錄，讓您看見努力與成果。</p>
-        <div class="cta-row">
-          <a class="btn-primary" href="#method">了解自然工法</a>
-          <a class="btn-ghost" href="#about">關於稻寶地</a>
-        </div>
-      </div>
-    </section>
-
-        <section class="steps" id="method" aria-label="自然工法四步驟">
-      <article class="step">
-        <div class="stamp">1</div>
-        <h3>覆草保水</h3>
-        <p>稻草回田覆蓋地表，降低蒸散與高溫烘灼，穩定土壤含水。</p>
-      </article>
-      <article class="step">
-        <div class="stamp">2</div>
-        <h3>減少翻土</h3>
-        <p>降低土壤擾動，守住土中碳與微生物棲地，減少 CO₂ 釋放。</p>
-      </article>
-      <article class="step">
-        <div class="stamp">3</div>
-        <h3>友善生物</h3>
-        <p>以誘捕、時序與生態平衡取代化學，讓益蟲與鳥類回來。</p>
-      </article>
-      <article class="step">
-        <div class="stamp">4</div>
-        <h3>公開紀錄</h3>
-        <p>每月更新水位、溫度與作業日誌，邀請您一同檢視碳管理。</p>
-      </article>
-      <div id="impact" style="display: none;"></div>
-      <div id="join" style="display: none;"></div>
-      <div id="contact" style="display: none;"></div>
-    </section>
-  </main>
-
-    <div class="corner-slogan">讓土地降溫 1°C，從每一個決定開始。</div>
-  <footer>
-    <p>© <span id="y"></span> 稻寶地．幸福農｜自然工法 × 減碳共好｜Pingtung, Taiwan</p>
-    <a href="#top" style="color: var(--eco-sage); text-decoration: none; font-size: 14px; margin-top: 8px; display: inline-block;">↑ 回到頂部</a>
-  </footer>
-
-  <script> /* 簡易腳本：寫入年份 */
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>

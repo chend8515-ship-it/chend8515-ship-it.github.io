@@ -80,10 +80,30 @@
     .btn-primary { background: linear-gradient(180deg, #2f6f3e, #1f5b32); color: #fff; padding: 12px 18px; border-radius: 14px; border: 1px solid #18482a; text-decoration: none; font-weight: 800; letter-spacing: .02em; box-shadow: 0 2px 0 #0e2d1b, 0 8px 18px rgba(31, 91, 50, .25); transition: transform .15s ease, box-shadow .15s ease; text-align: center; }
     .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 3px 0 #0e2d1b, 0 12px 24px rgba(31, 91, 50, .28); }
     .btn-ghost { background: transparent; color: var(--eco-deep); padding: 12px 18px; border-radius: 14px; border: 1px dashed var(--eco-deep); text-decoration: none; font-weight: 800; letter-spacing: .02em; text-align: center; }
-    .hero-art { position: relative; aspect-ratio: 1.1 / 1; background: radial-gradient( circle at 60% 40%, rgba(47, 111, 62, .25), transparent 50% ), linear-gradient( 145deg, #d8e3d5 0%, #f3f0e7 70% ); border: 2px solid #b29c7a; border-radius: var(--radius-2xl); box-shadow: var(--shadow-soft); overflow: hidden; }
-    .hero-art img { width: 100%; height: 100%; object-fit: cover; }
-    /* 移除了 .hero-art::before 規則，取消了虛線效果 */
-    .hero-plant { position: absolute; bottom: -6%; left: -4%; width: 140%; height: 70%; background: radial-gradient( ellipse at 20% 90%, rgba(47, 111, 62, .35), transparent 35% ), conic-gradient( from 180deg at 18% 100%, #4d8c5b, transparent 30% ), conic-gradient( from 175deg at 26% 100%, #2f6f3e, transparent 34% ), conic-gradient( from 185deg at 34% 100%, #7fb389, transparent 40% ); filter: blur(.5px); }
+    
+    /* 【重點修正】確保圖片容器正確顯示 */
+    .hero-art { 
+      position: relative; 
+      /* 移除 aspect-ratio，避免在某些情況下計算錯誤的高度 */
+      background: radial-gradient( circle at 60% 40%, rgba(47, 111, 62, .25), transparent 50% ), linear-gradient( 145deg, #d8e3d5 0%, #f3f0e7 70% ); 
+      border: 2px solid #b29c7a; 
+      border-radius: var(--radius-2xl); 
+      box-shadow: var(--shadow-soft); 
+      overflow: hidden;
+      height: 100%; /* 確保容器高度填滿網格 */
+    }
+
+    .hero-art img { 
+      width: 100%; 
+      height: auto; /* 【修正】使用 auto 確保圖片按比例縮小 */
+      max-height: 100%; /* 【修正】限制圖片最大高度為容器高度 */
+      object-fit: cover; 
+      display: block; /* 避免底部多餘的空白 */
+    }
+    
+    /* 移除或註解掉 .hero-plant，避免它蓋住圖片或導致高度計算問題 */
+    .hero-plant { display: none; }
+
 
     /* 中央置中 CTA：筆記卡風 */
     .center-cta { margin: 18px auto; max-width: 880px; padding: 18px; }
@@ -114,7 +134,12 @@
       .capsule-stack { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); }
       
       .hero { grid-template-columns: 1fr; padding-top: 24px; }
-      .hero-art { order: -1; aspect-ratio: 16/9; margin-bottom: 8px; }
+      .hero-art { 
+        order: -1; 
+        aspect-ratio: 16/9; /* 【修正】在手機上恢復固定比例，防止內容被擠壓 */
+        height: auto; /* 讓高由比例決定 */
+        margin-bottom: 8px; 
+      }
       .steps { grid-template-columns: repeat(2, 1fr); }
       .qr-fixed { opacity: 0; pointer-events: none; }
     }
@@ -130,7 +155,8 @@
   </style>
 </head>
 <body>
-    <div class="heat-haze"></div>
+  
+  <div class="heat-haze"></div>
   <div class="co2" style="left: 10%; width: 8px; height: 8px; animation-duration: 18s; animation-delay: 0s;"></div>
   <div class="co2" style="left: 22%; width: 14px; height: 14px; animation-duration: 22s; animation-delay: 3s;"></div>
   <div class="co2" style="left: 37%; width: 10px; height: 10px; animation-duration: 20s; animation-delay: 6s;"></div>
@@ -138,13 +164,104 @@
   <div class="co2" style="left: 71%; width: 9px; height: 9px; animation-duration: 19s; animation-delay: 4s;"></div>
   <div class="co2" style="left: 86%; width: 12px; height: 12px; animation-duration: 24s; animation-delay: 2s;"></div>
 
-    <a class="qr-fixed" href="#" aria-label="掃碼加入或點此開啟連結">
+  
+  <a class="qr-fixed" href="#" aria-label="掃碼加入或點此開啟連結">
     <img src="qr.png" alt="官方 QR Code" loading="lazy" decoding="async" />
     <small>掃碼加入｜光復救災</small>
   </a>
 
-    <header class="site-header">
+  
+  <header class="site-header">
     <div class="brand">
       <a href="#top" class="brand-logo" aria-label="稻寶地品牌標誌">稻</a>
       <div class="brand-text">
         <div class="brand-title">稻寶地．幸福農</div>
+        <div class="brand-sub">自然工法／小農減碳／永續共好</div>
+      </div>
+    </div>
+    <nav class="actions" aria-label="主導覽">
+      <div class="capsule-stack">
+        <a class="pill" href="#about">關於我們</a>
+        <a class="pill" href="#method">自然工法</a>
+        <a class="pill" href="#impact">減碳成效</a>
+        <a class="pill" href="#join">加入支持</a>
+        <a class="pill" href="#contact">聯絡洽詢</a>
+      </div>
+    </nav>
+  </header>
+
+  
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <h1 class="headline">讓土地喘口氣，<br/>把美好留給下一代。</h1>
+        <div class="keywords">
+          <span class="kw">無毒友善</span>
+          <span class="kw">覆草保水</span>
+          <span class="kw">減碳耕作</span>
+          <span class="kw">生態共融</span>
+          <span class="kw">田間透明</span>
+        </div>
+        <p class="subcopy">我們以「自然工法」為核心，透過覆草、減少翻土、保水保碳等實作，降低溫室氣體排放；並以公開透明的田間紀錄，邀請您一同守護風土。</p>
+        <div class="cta-row">
+          <a class="btn-primary" href="#join">立刻支持小農</a>
+          <a class="btn-ghost" href="#impact">查看減碳數據</a>
+        </div>
+      </div>
+      <div class="hero-art">
+                <img src="ok2.png" alt="花蓮稻田晨曦景色" loading="eager" decoding="async" />
+      </div>
+    </section>
+
+    
+    <section class="center-cta" id="about">
+      <div class="notecard">
+        <h2 class="cta-title">今年的田間承諾：三件事、持續做。</h2>
+        <p class="cta-desc">① 減少機械進出與翻耕頻率。② 覆蓋稻草維持土壤含水與碳儲。③ 以自然誘因替代化學投入。<br/>每個月公開一次農事紀錄，讓您看見努力與成果。</p>
+        <div class="cta-row">
+          <a class="btn-primary" href="#method">了解自然工法</a>
+          <a class="btn-ghost" href="#about">關於稻寶地</a>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="steps" id="method" aria-label="自然工法四步驟">
+      <article class="step">
+        <div class="stamp">1</div>
+        <h3>覆草保水</h3>
+        <p>稻草回田覆蓋地表，降低蒸散與高溫烘灼，穩定土壤含水。</p>
+      </article>
+      <article class="step">
+        <div class="stamp">2</div>
+        <h3>減少翻土</h3>
+        <p>降低土壤擾動，守住土中碳與微生物棲地，減少 CO₂ 釋放。</p>
+      </article>
+      <article class="step">
+        <div class="stamp">3</div>
+        <h3>友善生物</h3>
+        <p>以誘捕、時序與生態平衡取代化學，讓益蟲與鳥類回來。</p>
+      </article>
+      <article class="step">
+        <div class="stamp">4</div>
+        <h3>公開紀錄</h3>
+        <p>每月更新水位、溫度與作業日誌，邀請您一同檢視碳管理。</p>
+      </article>
+      <div id="impact" style="display: none;"></div>
+      <div id="join" style="display: none;"></div>
+      <div id="contact" style="display: none;"></div>
+    </section>
+  </main>
+
+  
+  <div class="corner-slogan">讓土地降溫 1°C，從每一個決定開始。</div>
+  <footer>
+    <p>© <span id="y"></span> 稻寶地．幸福農｜自然工法 × 減碳共好｜Pingtung, Taiwan</p>
+    <a href="#top" style="color: var(--eco-sage); text-decoration: none; font-size: 14px; margin-top: 8px; display: inline-block;">↑ 回到頂部</a>
+  </footer>
+
+  <script> /* 簡易腳本：寫入年份 */
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
